@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "fusion-official": {
+      "type": "http",
+      "url": "http://127.0.0.1:27182/mcp"
+    },
+    "fusion-cad-ai": {
+      "type": "stdio",
+      "command": "C:\\Windows\\System32\\cmd.exe",
+      "args": [
+        "/d",
+        "/c",
+        "C:\\Cursor_Projects\\MCP_Fusion360\\tools\\run-fusion-cad-ai.cmd"
+      ]
+    }
+  }
+}

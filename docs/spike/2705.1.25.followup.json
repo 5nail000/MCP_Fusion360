@@ -1,0 +1,98 @@
+{
+  "exports": {
+    "documents": [
+      {
+        "name": "Untitled",
+        "saved": false,
+        "modified": false
+      },
+      {
+        "name": "3DPT021-2",
+        "saved": false,
+        "modified": true
+      },
+      {
+        "name": "FCA_spike",
+        "saved": false,
+        "modified": true
+      }
+    ],
+    "active": "FCA_spike",
+    "rename": "",
+    "bodies": 1,
+    "designType": 1,
+    "designIntent": 2,
+    "units": "mm",
+    "volume_internal": 1.0,
+    "bbox_x10": [
+      10.0,
+      10.0,
+      10.0
+    ],
+    "exports": [
+      {
+        "label": "step",
+        "ok": true,
+        "bytes": 8918
+      },
+      {
+        "label": "stl",
+        "ok": true,
+        "bytes": 684
+      },
+      {
+        "label": "3mf",
+        "ok": true,
+        "bytes": 1660
+      },
+      {
+        "label": "obj",
+        "ok": true,
+        "bytes": 2240
+      },
+      {
+        "label": "f3d",
+        "ok": true,
+        "bytes": 74854
+      },
+      {
+        "label": "smt",
+        "ok": true,
+        "bytes": 5521
+      },
+      {
+        "label": "usd",
+        "ok": true,
+        "bytes": 3103
+      },
+      {
+        "label": "iges",
+        "ok": true,
+        "bytes": 11644
+      },
+      {
+        "label": "sat",
+        "ok": false,
+        "bytes": 0
+      }
+    ],
+    "image_ok": true,
+    "image_bytes": 51126,
+    "image_error": "",
+    "isSaved": false
+  },
+  "exports_elapsed_s": 6.233,
+  "capabilities": {
+    "cam": true,
+    "recognized_hole": true,
+    "drawing": true,
+    "drawing_export": true,
+    "volume": true,
+    "beam_network": true,
+    "thread_query": true,
+    "flat_pattern": true,
+    "configurationTopTable": null,
+    "renderManager": true
+  },
+  "capabilities_elapsed_s": 0.271
+}

@@ -1,0 +1,43 @@
+# Push helper (never commit)
+commit-message.txt
+
+# Secrets and local runtime
+.env
+.env.*
+.runtime/
+logs/
+.vscode/
+
+# Python / uv
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Generated CAD outputs
+exports/step/*
+!exports/step/.gitkeep
+exports/stl/*
+!exports/stl/.gitkeep
+exports/3mf/*
+!exports/3mf/.gitkeep
+exports/f3d/*
+!exports/f3d/.gitkeep
+exports/obj/*
+!exports/obj/.gitkeep
+exports/dxf/*
+!exports/dxf/.gitkeep
+exports/nc/*
+!exports/nc/.gitkeep
+exports/pdf/*
+!exports/pdf/.gitkeep
+renders/*
+!renders/.gitkeep
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store

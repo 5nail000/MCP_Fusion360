@@ -1,0 +1,16 @@
+---
+description: Цикл построения CAD-AI для Fusion
+alwaysApply: true
+---
+
+# CAD-AI workflow
+
+- Сначала параметры и единицы. Размер без единиц — ошибка `UNIT_AMBIGUOUS`, не догадка.
+- Модель параметрическая, в миллиметрах, с именами `length_mm`.
+- Не перезаписывай рабочую модель. История — Git или новый файл.
+- Цикл: BUILD → VALIDATE → INSPECT → preview → временный экспорт в `.runtime/verify` → VERIFY → копирование в `exports/` только после PASS.
+- STEP — master. STL и 3MF — производные для печати. F3D — архив Fusion.
+- Geometry valid не означает, что деталь изготовляема.
+- После построения смотри `render_view`, не только текст скрипта.
+- `execute` — привилегированный runtime внутри Fusion. Писать можно только в `exports/`, `renders/`, `.runtime/`.
+- Логи только через `fusion_cad_ai.logger.log` или `fca_rt.log`. Каждая строка начинается со времени.

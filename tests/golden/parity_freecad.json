@@ -1,0 +1,47 @@
+{
+  "flange": {
+    "volume_mm3": 8989.519393699107,
+    "bbox_mm": [
+      40.0000001,
+      40.0,
+      8.0
+    ]
+  },
+  "enclosure": {
+    "volume_mm3": 13933.876140340508,
+    "bbox_mm": [
+      80.0,
+      40.0,
+      25.0
+    ]
+  },
+  "print_bracket": {
+    "volume_mm3": 1793.524783386753,
+    "bbox_mm": [
+      24.0,
+      16.0,
+      17.5
+    ]
+  },
+  "pin_base": {
+    "volume_mm3": 6003.18578948924,
+    "bbox_mm": [
+      30.0,
+      30.0,
+      18.0
+    ]
+  },
+  "pin_cap": {
+    "volume_mm3": 5083.138964958933,
+    "bbox_mm": [
+      30.0,
+      30.0,
+      5.999999999999999
+    ]
+  },
+  "source": "MCP_FreeCAD read-only",
+  "tolerances": {
+    "volume_ratio": 0.002,
+    "bbox_mm": 0.02
+  }
+}

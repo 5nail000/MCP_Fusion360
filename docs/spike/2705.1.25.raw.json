@@ -1,0 +1,150 @@
+{
+  "initialize": {
+    "id": 1,
+    "jsonrpc": "2.0",
+    "result": {
+      "capabilities": {
+        "resources": {
+          "listChanged": false,
+          "subscribe": false
+        },
+        "tools": {
+          "listChanged": false
+        }
+      },
+      "protocolVersion": "2025-06-18",
+      "serverInfo": {
+        "name": "MCP Server Adapter",
+        "version": "1.0.0"
+      }
+    }
+  },
+  "elapsed": {
+    "initialize": 0.007,
+    "licensing": 0.01,
+    "documents_open": 0.006,
+    "active_command": 0.01,
+    "state_a": 0.11,
+    "state_b": 0.175,
+    "cube_and_exports": 0.969,
+    "capabilities": 0.156,
+    "sleep4": 4.437,
+    "screenshot": 0.198
+  },
+  "licensing": {
+    "activeExtensions": [
+      {
+        "title": "Design"
+      },
+      {
+        "title": "Simulation"
+      },
+      {
+        "title": "Manufacturing"
+      }
+    ],
+    "entitlementsInitialized": true,
+    "flexTokens": null,
+    "isCheckingEntitlements": true,
+    "licenseTypeSummary": "Trial",
+    "message": "Current licensing snapshot",
+    "purchasableExtensions": [
+      {
+        "title": "Manage"
+      }
+    ],
+    "queryType": "licensing",
+    "services": [
+      {
+        "daysToExpiration": 29,
+        "entitlementState": "trial",
+        "expiration": "2026-10-28T00:00:00Z",
+        "isEntitled": true,
+        "isExpiring": true,
+        "isFound": true,
+        "isStable": true,
+        "isTrial": true,
+        "licenseType": "Trial",
+        "serviceKey": "fusion360",
+        "userType": "Trial"
+      }
+    ],
+    "success": true,
+    "summary": {
+      "isPremium": true,
+      "isTrial": true,
+      "isUltimate": true,
+      "isUltimateLegacyCheck": true,
+      "trialDayNumber": 2
+    }
+  },
+  "documents_open": {
+    "message": "2 open document(s)",
+    "results": [
+      {
+        "isModified": false,
+        "isSaved": false,
+        "name": "Untitled"
+      },
+      {
+        "isActive": true,
+        "isModified": true,
+        "isSaved": false,
+        "name": "3DPT021-2"
+      }
+    ],
+    "success": true
+  },
+  "active_command": {
+    "commandId": "SelectCommand",
+    "commandName": "Select",
+    "isDefaultCommand": true,
+    "tooltip": "Selection is always active and the active selection mode displays here. Hold Ctrl (Windows) or Command (MacOS) to add objects to or remove objects from the selection. Change the active selection mode by selecting the mode you want to work with from the menu. Use the selection mode and selection filters to fine tune selection."
+  },
+  "state_a": {
+    "raw": "{\n    \"message\": \"SPIKE|{\\\"version\\\": \\\"2705.1.25\\\", \\\"doc_count\\\": 2, \\\"marker_before\\\": null, \\\"has_design\\\": true, \\\"designType\\\": 1, \\\"designIntent\\\": 2, \\\"defaultLengthUnits\\\": \\\"mm\\\", \\\"documents\\\": [{\\\"name\\\": \\\"Untitled\\\", \\\"isSaved\\\": false, \\\"isModified\\\": false}, {\\\"name\\\": \\\"3DPT021-2\\\", \\\"isSaved\\\": false, \\\"isModified\\\": true}]}\\n\",\n    \"success\": true\n}"
+  },
+  "state_b": {
+    "raw": "{\n    \"message\": \"SPIKE|{\\\"marker_after\\\": 7}\\n\",\n    \"success\": true\n}"
+  },
+  "cube_and_exports": {
+    "raw": "{\n    \"error\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 134, in <module>\\n  File \\\"<string>\\\", line 99, in run\\n  File \\\"C:\\\\Users/USER/AppData/Local/Autodesk/webdeploy/production/c657666a51cec7a9bbd042e10872bcd9532508a8/Api/Python/packages\\\\adsk\\\\fusion.py\\\", line 34375, in createSTEPExportOptions\\n    return _fusion.ExportManager_createSTEPExportOptions(self, *args)\\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^\\nRuntimeError: 3 : invlid argument geometry\\n\",\n    \"success\": false\n}"
+  },
+  "capabilities": {
+    "raw": "{\n    \"error\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 76, in <module>\\n  File \\\"<string>\\\", line 33, in run\\nUnboundLocalError: cannot access local variable 'adsk' where it is not associated with a value\\n\",\n    \"success\": false\n}"
+  },
+  "sleep4": {
+    "raw": "{\n    \"message\": \"SPIKE|{\\\"slept_s\\\": 4.001}\\n\",\n    \"success\": true\n}"
+  },
+  "latency_20": {
+    "samples_s": [
+      0.209,
+      0.225,
+      0.137,
+      0.141,
+      0.167,
+      0.138,
+      0.141,
+      0.144,
+      0.14,
+      0.137,
+      0.141,
+      0.142,
+      0.146,
+      0.139,
+      0.182,
+      0.139,
+      0.166,
+      0.137,
+      0.142,
+      0.146
+    ],
+    "p50_s": 0.142,
+    "max_s": 0.225
+  },
+  "screenshot": {
+    "data": "iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA1ElEQVR4nO3ZsQ7CQAzA0Abx/78cpkoMsN5Dwp661XXSW2529/pnHlpAUwAtoCmAFtAUQAtoCqAFNAXQApoCaAFNAbSApgBaQFMALaApgBbQFEALaAqgBTQF0AI3M0Pu6EbfDX768N2dU++nG/Bt6ie3gf8Cuzv3xN+fT/E8+bJPvE9bnAN0A75N++QW8EPwZmb29Ppf1w8FUPBDUFMALaApgBbQFEALaAqgBTQF0AKaAmgBTQG0gKYAWkBTAC2gKYAW0BRAC2gKoAU0BdACmgJoAc0LZOMrcRpP0h8AAAAASUVORK5CYII=",
+    "mimeType": "image/png",
+    "type": "image"
+  }
+}

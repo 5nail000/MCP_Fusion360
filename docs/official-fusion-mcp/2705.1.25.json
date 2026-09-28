@@ -1,0 +1,459 @@
+{
+  "captured_local": "2026-09-28T19:15:00",
+  "serverInfo": {
+    "name": "MCP Server Adapter",
+    "version": "1.0.0"
+  },
+  "protocol": "2025-06-18",
+  "capabilities": {
+    "resources": {
+      "listChanged": false,
+      "subscribe": false
+    },
+    "tools": {
+      "listChanged": false
+    }
+  },
+  "tool_names": [
+    "fusion_mcp_electronics_read",
+    "fusion_mcp_execute",
+    "fusion_mcp_read",
+    "fusion_mcp_update"
+  ],
+  "tools": [
+    {
+      "name": "fusion_mcp_electronics_read",
+      "description_chars": 5382,
+      "inputSchema": {
+        "properties": {
+          "entity_type": {
+            "description": "One of the listed electronics.<Class> values. Per-class fields and filter operators: resource://mcp.electronics_schema_<class>.",
+            "enum": [
+              "electronics.Attribute",
+              "electronics.Bus",
+              "electronics.Circle",
+              "electronics.Contact",
+              "electronics.Element",
+              "electronics.Frame",
+              "electronics.Gate",
+              "electronics.Hole",
+              "electronics.Grid",
+              "electronics.Instance",
+              "electronics.Junction",
+              "electronics.Label",
+              "electronics.Layer",
+              "electronics.Module",
+              "electronics.ModuleInstance",
+              "electronics.Net",
+              "electronics.Signal",
+              "electronics.Pad",
+              "electronics.Part",
+              "electronics.Pin",
+              "electronics.PinRef",
+              "electronics.PolyCutout",
+              "electronics.Spline",
+              "electronics.PolyPour",
+              "electronics.PolyShape",
+              "electronics.Port",
+              "electronics.PortRef",
+              "electronics.Rectangle",
+              "electronics.Segment",
+              "electronics.Sheet",
+              "electronics.Schematic",
+              "electronics.Board",
+              "electronics.Library",
+              "electronics.Smd",
+              "electronics.Symbol",
+              "electronics.DeviceSet",
+              "electronics.Device",
+              "electronics.Package",
+              "electronics.Package3D",
+              "electronics.Technology",
+              "electronics.Text",
+              "electronics.VariantDef",
+              "electronics.Variant",
+              "electronics.Via",
+              "electronics.ContactRef",
+              "electronics.Wire",
+              "electronics.Dimension",
+              "electronics.NetClass",
+              "electronics.Error",
+              "electronics.PortNetMappingEntry"
+            ],
+            "type": "string"
+          },
+          "object": {
+            "description": "Optional query: fields (property names), filters (predicates), pagination (limit, offset).",
+            "properties": {
+              "fields": {
+                "description": "Property names to return; omit for all columns.",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "filters": {
+                "description": "Predicates {property, op, value}. String properties: op must be eq. Integer/number: lt/gt only if that property exposes them in the per-class MCP schema resource.",
+                "items": {
+                  "properties": {
+                    "op": {
+                      "description": "eq for any filterable property. lt/gt only for integer/number properties that list those operators in resource://mcp.electronics_schema_<class>; string properties require eq.",
+                      "enum": [
+                        "eq",
+                        "lt",
+                        "gt"
+                      ],
+                      "type": "string"
+                    },
+                    "property": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "anyOf": [
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "property",
+                    "op",
+                    "value"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "pagination": {
+                "description": "Page size (limit) and rows to skip (offset). For the next page, use pagination.nextOffset from the response when pagination.hasMore is true.",
+                "properties": {
+                  "limit": {
+                    "description": "Max rows per page; default 100. Must not exceed 1000.",
+                    "type": "integer"
+                  },
+                  "offset": {
+                    "description": "Skip rows from the start of the result set; default 0.",
+                    "type": "integer"
+                  }
+                },
+                "type": "object"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "required": [
+          "entity_type"
+        ],
+        "type": "object"
+      },
+      "annotations": null
+    },
+    {
+      "name": "fusion_mcp_execute",
+      "description_chars": 18366,
+      "inputSchema": {
+        "properties": {
+          "featureType": {
+            "description": "Type of execution operation to perform",
+            "enum": [
+              "script",
+              "document",
+              "purchase",
+              "editImage",
+              "generatePowerpoint",
+              "previewImage"
+            ],
+            "type": "string"
+          },
+          "object": {
+            "description": "Object containing execution parameters",
+            "properties": {
+              "action": {
+                "description": "For featureType 'previewImage': how to handle the file: 'preview' (default), 'external', or 'download'. For multiple files, only 'download' is supported.",
+                "enum": [
+                  "preview",
+                  "external",
+                  "download"
+                ],
+                "type": "string"
+              },
+              "extensionName": {
+                "description": "When purchaseInterest is extension: feature pack id or extension display name (optional)",
+                "type": "string"
+              },
+              "fileId": {
+                "description": "The id of the file to open",
+                "type": "string"
+              },
+              "image_url": {
+                "description": "For featureType 'editImage': URL to the source image file (the signed_url of the model screenshot to edit/render). For featureType 'previewImage': single signed URL (string) or multiple signed URLs (array of strings) from the upload response (temporary, may expire).",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                ]
+              },
+              "operation": {
+                "description": "Document operation identifier",
+                "enum": [
+                  "open",
+                  "close",
+                  "save"
+                ],
+                "type": "string"
+              },
+              "prompt": {
+                "description": "For featureType 'editImage': natural language prompt describing the material changes or target environment/scene. Pass the user's request verbatim.",
+                "type": "string"
+              },
+              "purchaseInterest": {
+                "description": "Commercial topic to open in the purchase manager",
+                "enum": [
+                  "extension",
+                  "fusion_subscription",
+                  "flex"
+                ],
+                "type": "string"
+              },
+              "readOnly": {
+                "description": "For featureType 'script': set true only when the script exclusively reads the design and creates, modifies, or deletes nothing. A read-only script is allowed to run while a command dialog is open, which a normal script is not. The claim is enforced, so any attempt to modify the design from a read-only script fails with an error.",
+                "type": "boolean"
+              },
+              "s3_url": {
+                "description": "For featureType 'editImage': S3 URL for the source image file (permanent identifier used to refresh an expired signed_url). For featureType 'previewImage': single S3 URL (string) or multiple S3 URLs (array of strings). Must match the structure of image_url.",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                ]
+              },
+              "script": {
+                "description": "Python script contents",
+                "type": "string"
+              },
+              "slides_json": {
+                "description": "For featureType 'generatePowerpoint': a JSON string (array of slide objects) defining the presentation. Read the resource://mcp.generate_powerpoint_schema resource FIRST to learn the valid slide_number and placeholder idx values. Each slide has 'slide_number' and a 'placeholders' list of {idx, accepts, value}. Image placeholders (accepts 'image' or 'any') should use s3:// URLs from prior EditImage / Read screenshot attachments; they are resolved to fresh presigned URLs before generation.",
+                "type": "string"
+              },
+              "title": {
+                "description": "For featureType 'previewImage': optional title for the preview/save dialog (used with action='preview')",
+                "type": "string"
+              },
+              "userConfirmedCloseWithoutSave": {
+                "description": "The user has confirmed that changes should be discarded",
+                "type": "boolean"
+              },
+              "userConfirmedOpenPurchaseManager": {
+                "description": "Must be true only after the user explicitly agrees to open the in-app Purchase Manager",
+                "type": "boolean"
+              },
+              "userConfirmedSaveAndClose": {
+                "description": "The user has confirmed that changes should be saved",
+                "type": "boolean"
+              },
+              "userMessageSummary": {
+                "description": "Short paraphrase of the user's request (optional context)",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "required": [
+          "featureType",
+          "object"
+        ],
+        "type": "object"
+      },
+      "annotations": null
+    },
+    {
+      "name": "fusion_mcp_read",
+      "description_chars": 4542,
+      "inputSchema": {
+        "properties": {
+          "antiAliasing": {
+            "description": "Enable anti-aliasing for 'screenshot' query (default: true).",
+            "type": "boolean"
+          },
+          "apiCategory": {
+            "description": "The category of objects to search for in the documentation for the 'apiDocumentation' query. Use 'class' to search class names, 'member' to search property, function, or enum value names, 'description' to search for class or member descriptions, or 'all' to search all of these.",
+            "enum": [
+              "class",
+              "member",
+              "description",
+              "all"
+            ],
+            "type": "string"
+          },
+          "direction": {
+            "description": "Camera direction for 'screenshot' query before capture. Use 'current' to keep current view, or a standard/view cube direction: 'front', 'back', 'bottom', 'top', 'left', 'right', 'iso-bottom-left', 'iso-bottom-right', 'iso-top-left', 'iso-top-right'.",
+            "enum": [
+              "current",
+              "front",
+              "back",
+              "bottom",
+              "top",
+              "left",
+              "right",
+              "iso-bottom-left",
+              "iso-bottom-right",
+              "iso-top-left",
+              "iso-top-right"
+            ],
+            "type": "string"
+          },
+          "filter": {
+            "description": "A filter for the types to search for in the 'apiDocumentation' query. Use a '.' separated list of namespace and class names to optionally limit the search to a specific namespace or class.\nExample: 'adsk.cam' will limit the search to the cam namespace. 'adsk.fusion.Extrude' will limit the search to the Extrude class.",
+            "type": "string"
+          },
+          "height": {
+            "description": "Image height in pixels for 'screenshot' query (default: canvas height, range: 32-4096).",
+            "maximum": 4096,
+            "minimum": 32,
+            "type": "number"
+          },
+          "name": {
+            "description": "Document search term (fuzzy match on document name).",
+            "type": "string"
+          },
+          "operation": {
+            "description": "Document operation identifier.",
+            "enum": [
+              "search",
+              "open",
+              "recent"
+            ],
+            "type": "string"
+          },
+          "project": {
+            "description": "Document search project name or id filter. Searches all projects if not specified.",
+            "type": "string"
+          },
+          "queryType": {
+            "description": "Type of geometry query to perform. Polymorphic queries adapt behavior based on entityToken type. List queries enumerate all entities. Parameter queries access design metadata.",
+            "enum": [
+              "apiDocumentation",
+              "licensing",
+              "screenshot",
+              "document",
+              "projects",
+              "activeCommand"
+            ],
+            "type": "string"
+          },
+          "searchPattern": {
+            "description": "Regular expression pattern. For 'apiDocumentation' query: searches API class/member names. For 'materialLibraries' query: filters material/appearance names by pattern.",
+            "type": "string"
+          },
+          "transparentBackground": {
+            "description": "Use transparent background for 'screenshot' query (default: true).",
+            "type": "boolean"
+          },
+          "width": {
+            "description": "Image width in pixels for 'screenshot' query (default: canvas width, range: 32-4096).",
+            "maximum": 4096,
+            "minimum": 32,
+            "type": "number"
+          }
+        },
+        "required": [
+          "queryType"
+        ],
+        "type": "object"
+      },
+      "annotations": null
+    },
+    {
+      "name": "fusion_mcp_update",
+      "description_chars": 1539,
+      "inputSchema": {
+        "properties": {
+          "featureType": {
+            "description": "Type of update",
+            "enum": [
+              "undo",
+              "redo"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "featureType"
+        ],
+        "type": "object"
+      },
+      "annotations": null
+    }
+  ],
+  "resource_uris": [
+    "resource://mcp.electronics_entity_types",
+    "resource://mcp.electronics_schema_attribute",
+    "resource://mcp.electronics_schema_board",
+    "resource://mcp.electronics_schema_bus",
+    "resource://mcp.electronics_schema_circle",
+    "resource://mcp.electronics_schema_contact",
+    "resource://mcp.electronics_schema_contact_ref",
+    "resource://mcp.electronics_schema_device",
+    "resource://mcp.electronics_schema_device_set",
+    "resource://mcp.electronics_schema_dimension",
+    "resource://mcp.electronics_schema_element",
+    "resource://mcp.electronics_schema_error",
+    "resource://mcp.electronics_schema_frame",
+    "resource://mcp.electronics_schema_gate",
+    "resource://mcp.electronics_schema_grid",
+    "resource://mcp.electronics_schema_hole",
+    "resource://mcp.electronics_schema_instance",
+    "resource://mcp.electronics_schema_junction",
+    "resource://mcp.electronics_schema_label",
+    "resource://mcp.electronics_schema_layer",
+    "resource://mcp.electronics_schema_library",
+    "resource://mcp.electronics_schema_module",
+    "resource://mcp.electronics_schema_module_instance",
+    "resource://mcp.electronics_schema_net",
+    "resource://mcp.electronics_schema_net_class",
+    "resource://mcp.electronics_schema_package",
+    "resource://mcp.electronics_schema_package3d",
+    "resource://mcp.electronics_schema_pad",
+    "resource://mcp.electronics_schema_part",
+    "resource://mcp.electronics_schema_pin",
+    "resource://mcp.electronics_schema_pin_ref",
+    "resource://mcp.electronics_schema_poly_cutout",
+    "resource://mcp.electronics_schema_poly_pour",
+    "resource://mcp.electronics_schema_poly_shape",
+    "resource://mcp.electronics_schema_port",
+    "resource://mcp.electronics_schema_port_net_mapping_entry",
+    "resource://mcp.electronics_schema_port_ref",
+    "resource://mcp.electronics_schema_rectangle",
+    "resource://mcp.electronics_schema_schematic",
+    "resource://mcp.electronics_schema_segment",
+    "resource://mcp.electronics_schema_sheet",
+    "resource://mcp.electronics_schema_signal",
+    "resource://mcp.electronics_schema_smd",
+    "resource://mcp.electronics_schema_spline",
+    "resource://mcp.electronics_schema_symbol",
+    "resource://mcp.electronics_schema_technology",
+    "resource://mcp.electronics_schema_text",
+    "resource://mcp.electronics_schema_variant",
+    "resource://mcp.electronics_schema_variant_def",
+    "resource://mcp.electronics_schema_via",
+    "resource://mcp.electronics_schema_wire"
+  ]
+}
